@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, interactive-widget=resizes-content">
+  <title>ChatMock | Interface de chat</title>
+  <meta name="description" content="Protótipo de aplicativo de mensagens com conversas, respostas automáticas, indicador de digitação, emojis, reações e tema escuro.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <div class="app" id="app">
+    <aside class="lateral" aria-label="Conversas">
+      <header class="lat-topo">
+        <h1 class="marca"><span class="logo">💬</span> Papo</h1>
+        <button class="icone" id="tema" aria-label="Alternar tema">🌙</button>
+      </header>
+      <input type="search" id="busca" class="busca" placeholder="Buscar conversa ou mensagem" aria-label="Buscar">
+      <div class="abas" role="tablist"><button role="tab" data-aba="todas" aria-selected="true">Todas</button><button role="tab" data-aba="nao-lidas" aria-selected="false">Não lidas</button><button role="tab" data-aba="grupos" aria-selected="false">Grupos</button></div>
+      <ul class="lista" id="lista"></ul>
+    </aside>
+
+    <section class="conversa" id="conversa" aria-label="Conversa">
+      <header class="conv-topo">
+        <button class="icone voltar" id="voltar" aria-label="Voltar para as conversas">←</button>
+        <div class="avatar" id="c-avatar"></div>
+        <div class="c-info"><b id="c-nome"></b><small id="c-status"></small></div>
+        <button class="icone" id="c-buscar" aria-label="Buscar na conversa">🔍</button>
+        <button class="icone" id="c-limpar" aria-label="Limpar conversa">🗑</button>
+      </header>
+      <div class="busca-conv" id="busca-conv" hidden><input id="busca-msg" placeholder="Buscar nesta conversa…" aria-label="Buscar nesta conversa"><span id="busca-res"></span></div>
+      <div class="mensagens" id="mensagens" aria-live="polite"></div>
+      <div class="resp-a" id="resp-a" hidden><div><b id="resp-nome"></b><span id="resp-texto"></span></div><button class="icone" id="resp-fechar" aria-label="Cancelar resposta">✕</button></div>
+      <form class="compor" id="compor" autocomplete="off">
+        <button type="button" class="icone" id="emoji-btn" aria-label="Emojis" aria-expanded="false">😊</button>
+        <div class="emojis" id="emojis" hidden></div>
+        <textarea id="texto" rows="1" placeholder="Mensagem" aria-label="Mensagem"></textarea>
+        <button class="enviar" id="enviar" aria-label="Enviar">➤</button>
+      </form>
+      <div class="vazio-conv" id="vazio-conv"><span>💬</span><p>Escolha uma conversa para começar</p></div>
+    </section>
+  </div>
+  <div class="menu-msg" id="menu-msg" hidden role="menu">
+    <div class="reacoes" id="reacoes"></div>
+    <button data-acao="responder" role="menuitem">↩ Responder</button>
+    <button data-acao="copiar" role="menuitem">📋 Copiar</button>
+    <button data-acao="apagar" role="menuitem">🗑 Apagar para mim</button>
+  </div>
+  <div class="toast" id="toast" role="status" hidden></div>
+  <script src="js/script.js"></script>
+</body>
+</html>
